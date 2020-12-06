@@ -1,0 +1,14 @@
+<h1>dashboard!</h1>
+<form action="/users/viewRequests?email=<%= user.email %>" method="POST">
+    <div class="form-group">
+        <label>add new requests:</label>
+        <input type="text" class="form-control" name="osRequest" id="osRequest">
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">> add os requests</button>
+</form>
+ <div>
+	<h1>submitted os requests</h1>
+	<div style="border-style: ridge; box-sizing: border-box;">
+	<%- include('./partials/messages'); -%>
+	</div>
+</div>
