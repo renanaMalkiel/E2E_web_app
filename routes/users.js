@@ -11,10 +11,6 @@ const mg = mailgun({apiKey: process.env.MAILGUN_APIKEY, domain: DOMAIN});
 
 const jwt = require('jsonwebtoken');
 
-router.get('/dashboard', (request, response) => {
-	response.render('dashboard');
-})
-
 router.post('/viewRequests', (request, response) => {
 	const { email } = request.query; 
 	const { osRequest } = request.body;
@@ -58,18 +54,8 @@ function saveInDB(user, response) {
       	response.render('dashboard', {
 	      user
 	    });
-      	//response.json({ message : 'activation success' });
-      	
-        //response.redirect('dashboard');
       })
       .catch(err => console.log(err));
-  // user.save((arr, success) => {
-  // 	if(err) {
-  // 		console.log("error while account activation");
-  // 		return response.status(400).json({ error : 'Error activating account' })
-  // 	}
-  // 	response.json({ message : 'activation success' });
-  // })
 }
 
 function approveEmail(email, osURL, response) {
@@ -118,8 +104,5 @@ router.post('/AddOpenSource', (request, response) => {
 		approveEmail(email, osURL, response);
 	}	
 });
-
-
-
 
 module.exports = router;
